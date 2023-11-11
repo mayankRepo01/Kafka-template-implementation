@@ -12,10 +12,9 @@ import org.springframework.stereotype.Service;
 public class BookConsumer {
     Logger logger= LoggerFactory.getLogger(BookConsumer.class);
     @KafkaListener(topics = "${kafka.topic.json}",groupId = "test1")
-    public void consumeMessage(String book) throws JsonProcessingException {
+    
+    public void consumeMessage(Book book) throws JsonProcessingException {
 
-        ObjectMapper objectMapper=new ObjectMapper();
-        Book book1=objectMapper.readValue(book,Book.class);
         logger.info("Consume Book Payload by 1:- "+book);
 
     }
